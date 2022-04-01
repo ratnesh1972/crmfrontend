@@ -1,10 +1,13 @@
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Layout from './components/layout/Layout';
-
+import Login from './components/auth/Login';
+import Register from "./components/auth/Register";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<Layout />}></Route>
     </Routes>
   );
 }
