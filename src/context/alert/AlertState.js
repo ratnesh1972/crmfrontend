@@ -13,11 +13,6 @@ const AlertState = (props) => {
     const [state, dispatch] = useReducer(alertReducer, initialState);
 
     const setAlert = async (type, message) => {
-        //If any alert message is present, clear it first.
-        if (state.message !== '') {
-            dispatch({ type: CLEARALERT });
-        }
-
         //dispatch new alert.
         dispatch({ type: SETALERT, payload: { type, message } });
 

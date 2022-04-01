@@ -15,15 +15,15 @@ const Navbar = () => {
 
     return (
         <Box>
-            <AppBar position="static" color="secondary">
+            <AppBar position="static" color="primary">
                 <Toolbar>
-                    <Typography variant="h6" component="div">
+                    <Typography variant="h6" component="div" sx={{ marginRight: "16px" }}>
                         CRM
                     </Typography>
                     <Box sx={{ display: "flex", flexGrow: 1 }}>
-                        <Button color="inherit">Leads</Button>
-                        <Button color="inherit">Contacts</Button>
-                        <Button color="inherit">Services</Button>
+                        <Link to="/leads"><Button sx={{ color: "#fff" }} >Leads</Button></Link>
+                        <Link to="/contacts"><Button sx={{ color: "#fff" }}>contacts</Button></Link>
+                        <Link to="/services"><Button sx={{ color: "#fff" }}>Services</Button></Link>
                     </Box>
 
                     {state.isLoggedIn ?
