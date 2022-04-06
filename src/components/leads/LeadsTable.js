@@ -12,20 +12,10 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+const LeadsTable = ({ leads }) => {
+    //rows will be array of leads records
+    const rows = leads.data;
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-const LeadsTable = () => {
     return (
         <TableContainer component={Paper} sx={{ marginTop: "16px" }}>
             <Table sx={{ width: "100%" }} aria-label="simple table">
@@ -35,23 +25,23 @@ const LeadsTable = () => {
                         <TableCell align="right">Company</TableCell>
                         <TableCell align="right">Phone No</TableCell>
                         <TableCell align="right">Status</TableCell>
-                        <TableCell align="right">Date</TableCell>
+                        <TableCell align="right">Creator</TableCell>
                         <TableCell align="right">Actions</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow
-                            key={row.name}
+                            key={row._id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
                                 {row.name}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+                            <TableCell align="right">{row.company}</TableCell>
+                            <TableCell align="right">{row.phone}</TableCell>
+                            <TableCell align="right">{row.status}</TableCell>
+                            <TableCell align="right">{row.created_by.firstname}</TableCell>
                             <TableCell>
                                 <IconButton color="warning">
                                     <EditIcon fontSize="small" />

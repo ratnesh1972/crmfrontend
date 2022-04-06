@@ -31,7 +31,7 @@ const validationSchema = yup.object({
 //status options for leads.
 const status = ['New', 'Lost', 'Contacted', 'Canceled', 'Qualified', 'Confirmed'];
 
-const LeadsForm = () => {
+const LeadsForm = ({ addLead, id }) => {
 
     //set up initial values for form
     const formik = useFormik({
@@ -43,7 +43,9 @@ const LeadsForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert(values);
+            const lead = { ...values, created_by: id };
+            addLead(lead);
+            formik.resetForm();
         }
     });
 
