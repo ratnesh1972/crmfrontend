@@ -16,11 +16,11 @@ const Leads = () => {
     //use auth state to get users id.
     const { state } = useContext(authContext);
     //use leads context to use leads data and dispatch functions
-    const leadsContx = useContext(leadsContext);
+    const { leads, addLead, deleteLead, fetchLeads } = useContext(leadsContext);
 
     //fetch leads in useEffect
     useEffect(() => {
-        leadsContx.fetchLeads();
+        fetchLeads();
         //eslint-disable-next-line        
     }, [])
 
@@ -28,12 +28,12 @@ const Leads = () => {
         <Box sx={{ paddingY: "48px" }}>
             <Grid container columnGap={5}>
                 <Grid item md={4}>
-                    <LeadsForm addLead={leadsContx.addLead} id={state.user._id} />
+                    <LeadsForm addLeadHandler={addLead} id={state.user._id} />
                 </Grid>
                 <Grid item xs={12} md={7}>
                     <h1>Leads</h1>
                     <hr />
-                    <LeadsTable leads={leadsContx.state} />
+                    <LeadsTable state={leads} deleteLeadHandler={deleteLead} />
                 </Grid>
             </Grid>
         </Box>

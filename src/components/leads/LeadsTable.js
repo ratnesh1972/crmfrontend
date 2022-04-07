@@ -12,9 +12,10 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const LeadsTable = ({ leads }) => {
+
+const LeadsTable = ({ state, deleteLeadHandler }) => {
     //rows will be array of leads records
-    const rows = leads.data;
+    const rows = state.data;
 
     return (
         <TableContainer component={Paper} sx={{ marginTop: "16px" }}>
@@ -47,7 +48,7 @@ const LeadsTable = ({ leads }) => {
                                     <EditIcon fontSize="small" />
                                 </IconButton>
                                 <IconButton color="error">
-                                    <DeleteIcon fontSize="small" />
+                                    <DeleteIcon fontSize="small" onClick={() => deleteLeadHandler(row._id)} />
                                 </IconButton>
                             </TableCell>
                         </TableRow>

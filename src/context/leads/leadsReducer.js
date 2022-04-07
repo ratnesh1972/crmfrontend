@@ -7,13 +7,18 @@ const leadsReducer = (state, action) => {
                 ...state,
                 loading: false,
                 data: action.payload
-            }
+            };
         case ADDLEAD:
             return {
                 ...state,
                 loading: false,
                 data: [...state.data, action.payload]
-            }
+            };
+        case DELETELEAD:
+            return {
+                loading: false,
+                data: state.data.filter(lead => action.payload !== lead._id)
+            };
         default: return state;
     }
 
